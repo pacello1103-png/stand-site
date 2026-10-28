@@ -25,10 +25,10 @@ const THEME = {
         <div class="ctext">
           <h1>${U.h1}</h1>
           <p>${U.coverP}</p>
-          <div class="cta-row">${ctaHTML()}<span class="ctanote">${U.note}</span></div>
+          <div class="cta-row">${ctaHTML()}${tryHTML()}<span class="ctanote">${U.note}</span></div>
         </div>
         <div class="shots" aria-hidden="true">
-          <div class="dev ipad">${vidHTML('pen')}</div>
+          <div class="dev ipad" data-try>${vidHTML('pen')}<span class="trychip"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>${U.tryChip}</span></div>
           <div class="dev phone"><img src="img/m_phone_tuner.webp" alt="" decoding="async"></div>
         </div>
       </div>`;

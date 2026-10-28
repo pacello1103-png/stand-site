@@ -1,0 +1,1 @@
+self.document={createElement:()=>new OffscreenCanvas(1,1)};let reader=null;self.onmessage=async t=>{const{id:s,page:a}=t.data||{};try{reader=reader||await import("./follow-read.js");const e=await reader.readPage(a);self.postMessage({id:s,r:e})}catch(e){self.postMessage({id:s,error:String(e&&e.message||e)})}finally{try{a&&a.close&&a.close()}catch{}}};

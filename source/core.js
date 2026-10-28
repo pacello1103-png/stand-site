@@ -132,7 +132,8 @@ const vidSeen = new WeakMap();
 function vidCheck(v) {
   const hiddenDev = v.closest('.media .dev.before, .media .dev.after, [hidden]');
   const sh = document.getElementById('sheet');
-  const behindSheet = sh && !sh.hidden && !sh.contains(v);
+  const tb = document.getElementById('trybox');
+  const behindSheet = (sh && !sh.hidden && !sh.contains(v)) || (tb && !tb.hidden);
   const shouldPlay = !stillMotion && vidSeen.get(v) && !hiddenDev && !behindSheet && !document.hidden;
   if (shouldPlay && v.paused) { const pr = v.play(); if (pr) pr.catch(() => {}); }
   else if (!shouldPlay && !v.paused) v.pause();

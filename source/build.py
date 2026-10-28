@@ -45,6 +45,7 @@ SHELL='''<meta charset="utf-8">
 document.getElementById('also').innerHTML = ALSO.map(([i, t]) => `<span><svg class="i" aria-hidden="true"><use href="#i-${{i}}"/></svg>${{t}}</span>`).join('');
 {home}
 {core}
+{tryjs}
 </script>
 '''
 syms=R('syms.svg')
@@ -75,7 +76,7 @@ HEAD='''<!doctype html>
 for name,title,fonts,css,js,top in [
  ('v1_paper.html','Stand Site, Paper Folders','https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap','paper.css','paper.js','<b>Stand</b><span class="topr"><span class="mono" id="topNote">For iPad and iPhone</span><label class="lang"><svg aria-hidden="true"><use href="#i-globe"/></svg><select id="langSel" aria-label="Language"><option>English</option></select></label></span>')
 ]:  # the App Folders look (/app/) is no longer built; it keeps its last version
-    out=SHELL.format(title=title,fonts=fonts,css=R('core.css')+'\n'+R(css),syms=syms,top=top,content=R('content.js'),lang=R('lang.js'),theme=R(js),home=(R('home.js') if js=='paper.js' else ''),core=R('core.js'))
+    out=SHELL.format(title=title,fonts=fonts,css=R('core.css')+'\n'+R(css),syms=syms,top=top,content=R('content.js'),lang=R('lang.js'),theme=R(js),home=(R('home.js') if js=='paper.js' else ''),core=R('core.js'),tryjs=R('try.js'))
     open(os.path.join(D,'..',name),'w').write(out); print(name,len(out))
     # the published pages: the same body with share-preview tags around it
     sub = name.startswith('v2')

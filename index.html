@@ -470,6 +470,42 @@ a.cta:active { transform: scale(.97); }
   .hpics .ipad, .hpics .phone { translate: none; }
 }
 
+/* ---------- try Stand ---------- */
+.trybtn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px 11px 14px; border-radius: 999px; border: 0; cursor: pointer; background: transparent; color: inherit; box-shadow: inset 0 0 0 1.5px currentColor; font: 600 15px/1 var(--body); white-space: nowrap; transition: background .2s, color .2s, transform .2s; }
+.trybtn svg { width: 16px; height: 16px; flex: none; }
+.trybtn:hover { background: var(--ink); color: var(--on-ground, #f3efe6); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.final .trybtn:hover { background: currentColor; }
+.final .trybtn:hover svg, .final .trybtn:hover { color: inherit; }
+.trybtn:active { transform: scale(.97); }
+.cover .dev.ipad[data-try] { cursor: pointer; pointer-events: auto; }
+.trychip { position: absolute; z-index: 3; left: 5%; bottom: 7%; display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px 8px 11px; border-radius: 999px; background: rgba(255, 255, 255, .94); color: #1b1b1d; font: 600 13px/1 var(--body); box-shadow: 0 6px 20px rgba(0, 0, 0, .22), 0 0 0 1px rgba(0, 0, 0, .06); transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.trychip svg { width: 13px; height: 13px; color: var(--accent); }
+@media (hover: hover) { .dev.ipad[data-try]:hover .trychip { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 26px rgba(0, 0, 0, .28), 0 0 0 1px rgba(0, 0, 0, .06); } }
+.trybox { position: fixed; inset: 0; z-index: 60; display: grid; grid-template-rows: auto minmax(0, 1fr); background: #22211e var(--grain); background-blend-mode: multiply; color: #ece6d8; opacity: 0; transition: opacity .35s; }
+.trybox.in { opacity: 1; }
+.trybox[hidden] { display: none; }
+.tbar { display: flex; align-items: center; gap: 14px; padding: calc(10px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 10px max(18px, env(safe-area-inset-left, 0px)); }
+.tbar b { font: 700 19px/1 var(--display); font-stretch: 76%; letter-spacing: .01em; text-transform: uppercase; white-space: nowrap; }
+.thint { flex: 1; min-width: 0; font: 400 13.5px/1.35 var(--body); color: rgba(236, 230, 216, .72); }
+.tbtn { border: 0; cursor: pointer; padding: 9px 14px; border-radius: 999px; background: transparent; color: inherit; box-shadow: inset 0 0 0 1px rgba(236, 230, 216, .35); font: 500 13px/1 var(--body); white-space: nowrap; }
+.tbtn:hover { background: rgba(236, 230, 216, .1); }
+.tbar .icon { background: rgba(236, 230, 216, .1); color: inherit; }
+.tstage { position: relative; overflow: hidden; }
+.tdev { position: absolute; left: 50%; top: 50%; transform-origin: 50% 50%; box-sizing: content-box; border: 16px solid #121211; border-radius: 48px; background: #121211; box-shadow: 0 0 0 1.5px #3a3a3c, 0 40px 90px rgba(0, 0, 0, .55); }
+/* the screen: rounded like the iPad's own, clipped in a way Safari also respects for a frame inside */
+.tscr { position: absolute; inset: 0; border-radius: 32px; overflow: hidden; clip-path: inset(0 round 32px); -webkit-mask-image: -webkit-radial-gradient(white, black); isolation: isolate; background: #f2f2f5; }
+.tdev iframe { display: block; width: 100%; height: 100%; border: 0; background: #f2f2f5; }
+.tload { position: absolute; inset: 0; display: grid; place-items: center; background: #f2f2f5; opacity: 0; pointer-events: none; transition: opacity .4s; }
+.tload i { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(35, 57, 122, .18); border-top-color: #23397a; animation: tspin .8s linear infinite; }
+@keyframes tspin { to { transform: rotate(360deg); } }
+.trybox.loading .tload { opacity: 1; }
+.trybox.ph .tdev { inset: 0; left: 0; top: 0; width: 100% !important; height: 100% !important; transform: none !important; border: 0; border-radius: 0; box-shadow: none; }
+.trybox.ph .tscr { border-radius: 0; clip-path: none; -webkit-mask-image: none; }
+.trybox.ph .tbar { padding-bottom: 8px; gap: 10px; }
+.trybox.ph .thint { font-size: 12px; }
+@media (max-width: 900px) { .trybox:not(.ph) .thint { display: none; } .tbar b { flex: 1; } }
+@media (max-width: 420px) { .trybox.ph .thint { display: none; } .trybox.ph .tbar b { flex: 1; } }
+
 </style>
 </head>
 <body>
@@ -724,6 +760,7 @@ const APP_STORE_URL = '';
 const ctaHTML = () => APP_STORE_URL
   ? `<a class="cta" href="${APP_STORE_URL}" target="_blank" rel="noopener">${U.dl}</a>`
   : `<span class="cta">${U.soon}</span>`;
+const tryHTML = () => `<button class="trybtn" data-try><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>${U.tryBtn}</button>`;
 
 /* ---------- the home page below the folders ---------- */
 const ALSO = [['phone', 'iPad and iPhone together'], ['cloud', 'Back up to iCloud Drive or Files'], ['sliders', 'Blue or black, light or dark'], ['more', 'Only your tools on the home screen'], ['ear', 'Bluetooth headphones and pedals'], ['check', 'Works offline']];
@@ -778,6 +815,7 @@ const LANGS = [['en', 'English'], ['pt', 'Português'], ['es', 'Español'], ['fr
 
 const UI = {
   en: {
+    tryBtn: 'Try it here', tryTitle: 'Stand, live', tryHint: 'The real app, with three Bach scores in it. Open one, tap Markings and write, or try the tuner, the passages and a notebook.', tryHintPhone: 'The real iPhone app. On an iPad or a computer you can try the whole stand.', tryReset: 'Start again', tryChip: 'Try it',
     title: 'Stand · The music stand that practises with you', top: 'For iPad and iPhone', lang: 'Language',
     folder: 'Folder', eyebrow: 'Folder {i} of {n} · {k} things inside', open: 'Open',
     hintWide: 'Open a folder to see inside', hintPhone: 'Tap a folder to see inside',
@@ -797,6 +835,7 @@ const UI = {
     drawerLabel: 'What Stand does', alsoLabel: 'Also in Stand', onIphone: '{x} on iPhone',
   },
   pt: {
+    tryBtn: 'Experimentar aqui', tryTitle: 'Stand, ao vivo', tryHint: 'A app verdadeira, com três partituras de Bach. Abre uma, toca em Markings e escreve, ou experimenta o afinador, as passagens e um caderno.', tryHintPhone: 'A app do iPhone, a sério. Num iPad ou num computador podes experimentar a estante toda.', tryReset: 'Começar de novo', tryChip: 'Experimenta',
     title: 'Stand · A estante que estuda contigo', top: 'Para iPad e iPhone', lang: 'Língua',
     folder: 'Pasta', eyebrow: 'Pasta {i} de {n} · {k} coisas lá dentro', open: 'Abrir',
     hintWide: 'Abre uma pasta para ver o que tem', hintPhone: 'Toca numa pasta para ver o que tem',
@@ -816,6 +855,7 @@ const UI = {
     drawerLabel: 'O que o Stand faz', alsoLabel: 'Também no Stand', onIphone: '{x} no iPhone',
   },
   es: {
+    tryBtn: 'Pruébalo aquí', tryTitle: 'Stand, en directo', tryHint: 'La app de verdad, con tres partituras de Bach. Abre una, toca Markings y escribe, o prueba el afinador, los pasajes y un cuaderno.', tryHintPhone: 'La app de iPhone, de verdad. En un iPad o un ordenador puedes probar el atril entero.', tryReset: 'Empezar de nuevo', tryChip: 'Pruébalo',
     title: 'Stand · El atril que estudia contigo', top: 'Para iPad y iPhone', lang: 'Idioma',
     folder: 'Carpeta', eyebrow: 'Carpeta {i} de {n} · {k} cosas dentro', open: 'Abrir',
     hintWide: 'Abre una carpeta para ver qué hay dentro', hintPhone: 'Toca una carpeta para ver qué hay dentro',
@@ -835,6 +875,7 @@ const UI = {
     drawerLabel: 'Qué hace Stand', alsoLabel: 'También en Stand', onIphone: '{x} en el iPhone',
   },
   fr: {
+    tryBtn: 'L’essayer ici', tryTitle: 'Stand, en direct', tryHint: 'La vraie app, avec trois partitions de Bach. Ouvrez-en une, touchez Markings et écrivez, ou essayez l’accordeur, les passages et un cahier.', tryHintPhone: 'La vraie app pour iPhone. Sur un iPad ou un ordinateur, vous pouvez essayer tout le pupitre.', tryReset: 'Recommencer', tryChip: 'Essayer',
     title: 'Stand · Le pupitre qui travaille avec vous', top: 'Pour iPad et iPhone', lang: 'Langue',
     folder: 'Dossier', eyebrow: 'Dossier {i} sur {n} · {k} choses à l’intérieur', open: 'Ouvrir',
     hintWide: 'Ouvrez un dossier pour voir ce qu’il contient', hintPhone: 'Touchez un dossier pour voir ce qu’il contient',
@@ -854,6 +895,7 @@ const UI = {
     drawerLabel: 'Ce que fait Stand', alsoLabel: 'Aussi dans Stand', onIphone: '{x} sur iPhone',
   },
   de: {
+    tryBtn: 'Hier ausprobieren', tryTitle: 'Stand, live', tryHint: 'Die echte App, mit drei Partituren von Bach. Öffne eine, tippe auf Markings und schreib los, oder probiere das Stimmgerät, die Passagen und ein Notizbuch.', tryHintPhone: 'Die echte iPhone-App. Auf einem iPad oder Computer kannst du das ganze Pult ausprobieren.', tryReset: 'Neu beginnen', tryChip: 'Ausprobieren',
     title: 'Stand · Das Notenpult, das mit dir übt', top: 'Für iPad und iPhone', lang: 'Sprache',
     folder: 'Mappe', eyebrow: 'Mappe {i} von {n} · {k} Dinge darin', open: 'Öffnen',
     hintWide: 'Öffne eine Mappe, um hineinzusehen', hintPhone: 'Tippe auf eine Mappe, um hineinzusehen',
@@ -873,6 +915,7 @@ const UI = {
     drawerLabel: 'Was Stand kann', alsoLabel: 'Außerdem in Stand', onIphone: '{x} auf dem iPhone',
   },
   it: {
+    tryBtn: 'Provala qui', tryTitle: 'Stand, dal vivo', tryHint: 'L’app vera, con tre partiture di Bach. Aprine una, tocca Markings e scrivi, oppure prova l’accordatore, i passaggi e un quaderno.', tryHintPhone: 'La vera app per iPhone. Su un iPad o un computer puoi provare tutto il leggio.', tryReset: 'Ricomincia', tryChip: 'Provala',
     title: 'Stand · Il leggio che studia con te', top: 'Per iPad e iPhone', lang: 'Lingua',
     folder: 'Cartella', eyebrow: 'Cartella {i} di {n} · {k} cose dentro', open: 'Apri',
     hintWide: 'Apri una cartella per vedere cosa c’è dentro', hintPhone: 'Tocca una cartella per vedere cosa c’è dentro',
@@ -1300,10 +1343,10 @@ const THEME = {
         <div class="ctext">
           <h1>${U.h1}</h1>
           <p>${U.coverP}</p>
-          <div class="cta-row">${ctaHTML()}<span class="ctanote">${U.note}</span></div>
+          <div class="cta-row">${ctaHTML()}${tryHTML()}<span class="ctanote">${U.note}</span></div>
         </div>
         <div class="shots" aria-hidden="true">
-          <div class="dev ipad">${vidHTML('pen')}</div>
+          <div class="dev ipad" data-try>${vidHTML('pen')}<span class="trychip"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>${U.tryChip}</span></div>
           <div class="dev phone"><img src="img/m_phone_tuner.webp" alt="" decoding="async"></div>
         </div>
       </div>`;
@@ -1366,7 +1409,7 @@ document.getElementById('also').innerHTML = ALSO.map(([i, t]) => `<span><svg cla
       <div class="fbig" aria-hidden="true">${[...'Stand'].map((c, k) => `<span style="--i:${k}">${c}</span>`).join('')}</div>
       <div class="ftx">
         <h2 id="finalH">${U.h1}</h2>
-        <div class="cta-row">${ctaHTML()}<span class="ctanote">${U.finalNote}</span></div>
+        <div class="cta-row">${ctaHTML()}${tryHTML()}<span class="ctanote">${U.finalNote}</span></div>
       </div>
     </section>`;
   host.querySelectorAll('[data-tone]').forEach((el) => THEME.tone(el, F.find((f) => f.id === el.dataset.tone)));
@@ -1548,7 +1591,8 @@ const vidSeen = new WeakMap();
 function vidCheck(v) {
   const hiddenDev = v.closest('.media .dev.before, .media .dev.after, [hidden]');
   const sh = document.getElementById('sheet');
-  const behindSheet = sh && !sh.hidden && !sh.contains(v);
+  const tb = document.getElementById('trybox');
+  const behindSheet = (sh && !sh.hidden && !sh.contains(v)) || (tb && !tb.hidden);
   const shouldPlay = !stillMotion && vidSeen.get(v) && !hiddenDev && !behindSheet && !document.hidden;
   if (shouldPlay && v.paused) { const pr = v.play(); if (pr) pr.catch(() => {}); }
   else if (!shouldPlay && !v.paused) v.pause();
@@ -1719,6 +1763,55 @@ watchVids();
 const start = F.findIndex((f) => '#' + f.id === location.hash);
 if (start >= 0) { cur = start; show(); fill(start); sheet.classList.add('in'); }
 matchMedia(PHONE_MQ).addEventListener?.('change', () => { hover(-1); place(); });
+
+/* ---------- try Stand: the real app in a frame, with three Bach scores already in it ---------- */
+(() => {
+  const PH = /iPhone|iPod/.test(navigator.userAgent) || (Math.min(screen.width, screen.height) < 500 && matchMedia('(pointer: coarse)').matches);
+  const box = document.createElement('section');
+  box.className = 'trybox' + (PH ? ' ph' : ''); box.id = 'trybox'; box.hidden = true;
+  box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', U.tryTitle);
+  box.innerHTML = `<div class="tbar"><b>${U.tryTitle}</b><span class="thint">${PH ? U.tryHintPhone : U.tryHint}</span>
+      <button class="tbtn" id="tryReset">${U.tryReset}</button>
+      <button class="icon" id="tryClose" aria-label="${U.close}"><svg><use href="#i-x"/></svg></button></div>
+    <div class="tstage"><div class="tdev"><div class="tscr"><iframe title="Stand" allow="microphone; camera; autoplay; fullscreen; clipboard-write"></iframe><div class="tload"><i></i></div></div></div></div>`;
+  document.body.append(box);
+  const frame = box.querySelector('iframe'), dev = box.querySelector('.tdev'), stage = box.querySelector('.tstage');
+  let y = 0, pushed = false;
+  /* an 11-inch iPad, the right way round for the window, as large as fits */
+  const fit = () => {
+    if (box.hidden || PH) return;
+    const w = stage.clientWidth, h = stage.clientHeight, land = w >= h * 0.95;
+    const W = land ? 1180 : 820, H = land ? 820 : 1180, B = 16;
+    const k = Math.min(1, (w - 24) / (W + 2 * B), (h - 24) / (H + 2 * B));
+    dev.style.width = W + 'px'; dev.style.height = H + 'px'; dev.style.transform = `translate(-50%, -50%) scale(${k})`;
+  };
+  addEventListener('resize', fit);
+  const pauseAll = () => document.querySelectorAll('video.vid').forEach((v) => (typeof vidCheck === 'function' ? vidCheck(v) : v.pause()));
+  const load = (reset) => { box.classList.add('loading'); frame.src = 'demo/index.html?lang=' + LANG + (reset ? '&again=' + Date.now() : ''); };
+  frame.addEventListener('load', () => setTimeout(() => box.classList.remove('loading'), 600));
+  function open(push = true) {
+    if (!box.hidden) return;
+    y = scrollY; document.body.style.top = -y + 'px'; document.body.classList.add('locked');
+    box.hidden = false; fit(); load(false); pauseAll();
+    requestAnimationFrame(() => box.classList.add('in'));
+    if (push) { try { history.pushState({ stand: 'try' }, '', '#try'); pushed = true; } catch {} }
+  }
+  function shut() {
+    if (box.hidden) return;
+    box.classList.remove('in'); box.hidden = true; frame.src = 'about:blank';
+    /* what was tried is not kept */
+    setTimeout(() => { try { indexedDB.deleteDatabase('stand'); } catch {} }, 300);
+    document.body.classList.remove('locked'); document.body.style.top = ''; scrollTo(0, y);
+    pauseAll();
+  }
+  const ask = () => { if (pushed && history.state && history.state.stand === 'try') history.back(); else { shut(); try { history.replaceState(null, '', location.pathname + location.search); } catch {} } };
+  document.getElementById('tryClose').addEventListener('click', ask);
+  document.getElementById('tryReset').addEventListener('click', () => load(true));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !box.hidden) ask(); });
+  addEventListener('popstate', () => { if (location.hash === '#try') open(false); else { pushed = false; shut(); } });
+  document.addEventListener('click', (e) => { const t = e.target.closest('[data-try]'); if (!t) return; e.preventDefault(); e.stopPropagation(); open(); }, true);
+  if (location.hash === '#try') open(false);
+})();
 
 </script>
 

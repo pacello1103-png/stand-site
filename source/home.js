@@ -52,7 +52,7 @@
       <div class="fbig" aria-hidden="true">${[...'Stand'].map((c, k) => `<span style="--i:${k}">${c}</span>`).join('')}</div>
       <div class="ftx">
         <h2 id="finalH">${U.h1}</h2>
-        <div class="cta-row">${ctaHTML()}<span class="ctanote">${U.finalNote}</span></div>
+        <div class="cta-row">${ctaHTML()}${tryHTML()}<span class="ctanote">${U.finalNote}</span></div>
       </div>
     </section>`;
   host.querySelectorAll('[data-tone]').forEach((el) => THEME.tone(el, F.find((f) => f.id === el.dataset.tone)));

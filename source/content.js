@@ -183,6 +183,7 @@ const APP_STORE_URL = '';
 const ctaHTML = () => APP_STORE_URL
   ? `<a class="cta" href="${APP_STORE_URL}" target="_blank" rel="noopener">${U.dl}</a>`
   : `<span class="cta">${U.soon}</span>`;
+const tryHTML = () => `<button class="trybtn" data-try><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>${U.tryBtn}</button>`;
 
 /* ---------- the home page below the folders ---------- */
 const ALSO = [['phone', 'iPad and iPhone together'], ['cloud', 'Back up to iCloud Drive or Files'], ['sliders', 'Blue or black, light or dark'], ['more', 'Only your tools on the home screen'], ['ear', 'Bluetooth headphones and pedals'], ['check', 'Works offline']];
