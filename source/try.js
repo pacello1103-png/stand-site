@@ -4,8 +4,12 @@
   const box = document.createElement('section');
   box.className = 'trybox' + (PH ? ' ph' : ''); box.id = 'trybox'; box.hidden = true;
   box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', U.tryTitle);
-  box.innerHTML = `<div class="tbar"><b>${U.tryTitle}</b><span class="thint">${PH ? U.tryHintPhone : U.tryHint}</span>
-      <button class="tbtn" id="tryReset">${U.tryReset}</button>
+  box.innerHTML = `<div class="tbar"><b>Stand</b>
+      <span class="tkind">${PH
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10.6 5.2h2.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
+        : '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="19" cy="12" r=".9" fill="currentColor"/></svg>'}${PH ? U.tryIphone : U.tryIpad}</span>
+      <span class="thint">${PH ? U.tryHintPhone : U.tryHint}</span>
+      <button class="tbtn" id="tryReset" aria-label="${U.tryReset}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${U.tryReset}</span></button>
       <button class="icon" id="tryClose" aria-label="${U.close}"><svg><use href="#i-x"/></svg></button></div>
     <div class="tstage"><div class="tdev"><div class="tscr"><iframe title="Stand" allow="microphone; camera; autoplay; fullscreen; clipboard-write"></iframe><div class="tload"><i></i></div></div></div></div>`;
   document.body.append(box);

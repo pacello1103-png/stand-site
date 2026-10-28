@@ -323,5 +323,12 @@ a.cta:active { transform: scale(.97); }
 .trybox.ph .tscr { border-radius: 0; clip-path: none; -webkit-mask-image: none; }
 .trybox.ph .tbar { padding-bottom: 8px; gap: 10px; }
 .trybox.ph .thint { font-size: 12px; }
-@media (max-width: 900px) { .trybox:not(.ph) .thint { display: none; } .tbar b { flex: 1; } }
-@media (max-width: 420px) { .trybox.ph .thint { display: none; } .trybox.ph .tbar b { flex: 1; } }
+@media (max-width: 900px) { .trybox:not(.ph) .thint { display: none; } }
+@media (max-width: 420px) { .trybox.ph .thint { display: none; } }
+
+.tkind { display: inline-flex; align-items: center; gap: 7px; flex: none; padding: 6px 12px 6px 9px; border-radius: 999px; background: rgba(236, 230, 216, .12); color: #ece6d8; font: 500 13px/1 var(--body); white-space: nowrap; }
+.tkind svg { width: 17px; height: 17px; flex: none; opacity: .9; }
+.tbtn { display: inline-flex; align-items: center; gap: 7px; }
+.tbtn svg { width: 15px; height: 15px; flex: none; }
+@media (max-width: 900px) { .tbar b { flex: none; } .tkind { margin-right: auto; } }
+@media (max-width: 520px) { .tbtn { padding: 0; width: 40px; height: 40px; justify-content: center; border-radius: 12px; } .tbtn span { display: none; } .tbtn svg { width: 18px; height: 18px; } }

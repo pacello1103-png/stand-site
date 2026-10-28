@@ -503,8 +503,15 @@ a.cta:active { transform: scale(.97); }
 .trybox.ph .tscr { border-radius: 0; clip-path: none; -webkit-mask-image: none; }
 .trybox.ph .tbar { padding-bottom: 8px; gap: 10px; }
 .trybox.ph .thint { font-size: 12px; }
-@media (max-width: 900px) { .trybox:not(.ph) .thint { display: none; } .tbar b { flex: 1; } }
-@media (max-width: 420px) { .trybox.ph .thint { display: none; } .trybox.ph .tbar b { flex: 1; } }
+@media (max-width: 900px) { .trybox:not(.ph) .thint { display: none; } }
+@media (max-width: 420px) { .trybox.ph .thint { display: none; } }
+
+.tkind { display: inline-flex; align-items: center; gap: 7px; flex: none; padding: 6px 12px 6px 9px; border-radius: 999px; background: rgba(236, 230, 216, .12); color: #ece6d8; font: 500 13px/1 var(--body); white-space: nowrap; }
+.tkind svg { width: 17px; height: 17px; flex: none; opacity: .9; }
+.tbtn { display: inline-flex; align-items: center; gap: 7px; }
+.tbtn svg { width: 15px; height: 15px; flex: none; }
+@media (max-width: 900px) { .tbar b { flex: none; } .tkind { margin-right: auto; } }
+@media (max-width: 520px) { .tbtn { padding: 0; width: 40px; height: 40px; justify-content: center; border-radius: 12px; } .tbtn span { display: none; } .tbtn svg { width: 18px; height: 18px; } }
 
 </style>
 </head>
@@ -815,7 +822,7 @@ const LANGS = [['en', 'English'], ['pt', 'Português'], ['es', 'Español'], ['fr
 
 const UI = {
   en: {
-    tryBtn: 'Try it here', tryTitle: 'Stand, live', tryHint: 'The real app, with three Bach scores in it. Open one, tap Markings and write, or try the tuner, the passages and a notebook.', tryHintPhone: 'The real iPhone app. On an iPad or a computer you can try the whole stand.', tryReset: 'Start again', tryChip: 'Try it',
+    tryIphone: 'The iPhone app', tryIpad: 'The iPad app', tryBtn: 'Try it here', tryTitle: 'Stand, live', tryHint: 'The real app, with three Bach scores in it. Open one, tap Markings and write, or try the tuner, the passages and a notebook.', tryHintPhone: 'The real iPhone app. On an iPad or a computer you can try the whole stand.', tryReset: 'Start again', tryChip: 'Try it',
     title: 'Stand · The music stand that practises with you', top: 'For iPad and iPhone', lang: 'Language',
     folder: 'Folder', eyebrow: 'Folder {i} of {n} · {k} things inside', open: 'Open',
     hintWide: 'Open a folder to see inside', hintPhone: 'Tap a folder to see inside',
@@ -835,7 +842,7 @@ const UI = {
     drawerLabel: 'What Stand does', alsoLabel: 'Also in Stand', onIphone: '{x} on iPhone',
   },
   pt: {
-    tryBtn: 'Experimentar aqui', tryTitle: 'Stand, ao vivo', tryHint: 'A app verdadeira, com três partituras de Bach. Abre uma, toca em Markings e escreve, ou experimenta o afinador, as passagens e um caderno.', tryHintPhone: 'A app do iPhone, a sério. Num iPad ou num computador podes experimentar a estante toda.', tryReset: 'Começar de novo', tryChip: 'Experimenta',
+    tryIphone: 'A app do iPhone', tryIpad: 'A app do iPad', tryBtn: 'Experimentar aqui', tryTitle: 'Stand, ao vivo', tryHint: 'A app verdadeira, com três partituras de Bach. Abre uma, toca em Markings e escreve, ou experimenta o afinador, as passagens e um caderno.', tryHintPhone: 'A app do iPhone, a sério. Num iPad ou num computador podes experimentar a estante toda.', tryReset: 'Começar de novo', tryChip: 'Experimenta',
     title: 'Stand · A estante que estuda contigo', top: 'Para iPad e iPhone', lang: 'Língua',
     folder: 'Pasta', eyebrow: 'Pasta {i} de {n} · {k} coisas lá dentro', open: 'Abrir',
     hintWide: 'Abre uma pasta para ver o que tem', hintPhone: 'Toca numa pasta para ver o que tem',
@@ -855,7 +862,7 @@ const UI = {
     drawerLabel: 'O que o Stand faz', alsoLabel: 'Também no Stand', onIphone: '{x} no iPhone',
   },
   es: {
-    tryBtn: 'Pruébalo aquí', tryTitle: 'Stand, en directo', tryHint: 'La app de verdad, con tres partituras de Bach. Abre una, toca Markings y escribe, o prueba el afinador, los pasajes y un cuaderno.', tryHintPhone: 'La app de iPhone, de verdad. En un iPad o un ordenador puedes probar el atril entero.', tryReset: 'Empezar de nuevo', tryChip: 'Pruébalo',
+    tryIphone: 'La app de iPhone', tryIpad: 'La app de iPad', tryBtn: 'Pruébalo aquí', tryTitle: 'Stand, en directo', tryHint: 'La app de verdad, con tres partituras de Bach. Abre una, toca Markings y escribe, o prueba el afinador, los pasajes y un cuaderno.', tryHintPhone: 'La app de iPhone, de verdad. En un iPad o un ordenador puedes probar el atril entero.', tryReset: 'Empezar de nuevo', tryChip: 'Pruébalo',
     title: 'Stand · El atril que estudia contigo', top: 'Para iPad y iPhone', lang: 'Idioma',
     folder: 'Carpeta', eyebrow: 'Carpeta {i} de {n} · {k} cosas dentro', open: 'Abrir',
     hintWide: 'Abre una carpeta para ver qué hay dentro', hintPhone: 'Toca una carpeta para ver qué hay dentro',
@@ -875,7 +882,7 @@ const UI = {
     drawerLabel: 'Qué hace Stand', alsoLabel: 'También en Stand', onIphone: '{x} en el iPhone',
   },
   fr: {
-    tryBtn: 'L’essayer ici', tryTitle: 'Stand, en direct', tryHint: 'La vraie app, avec trois partitions de Bach. Ouvrez-en une, touchez Markings et écrivez, ou essayez l’accordeur, les passages et un cahier.', tryHintPhone: 'La vraie app pour iPhone. Sur un iPad ou un ordinateur, vous pouvez essayer tout le pupitre.', tryReset: 'Recommencer', tryChip: 'Essayer',
+    tryIphone: 'L’app iPhone', tryIpad: 'L’app iPad', tryBtn: 'L’essayer ici', tryTitle: 'Stand, en direct', tryHint: 'La vraie app, avec trois partitions de Bach. Ouvrez-en une, touchez Markings et écrivez, ou essayez l’accordeur, les passages et un cahier.', tryHintPhone: 'La vraie app pour iPhone. Sur un iPad ou un ordinateur, vous pouvez essayer tout le pupitre.', tryReset: 'Recommencer', tryChip: 'Essayer',
     title: 'Stand · Le pupitre qui travaille avec vous', top: 'Pour iPad et iPhone', lang: 'Langue',
     folder: 'Dossier', eyebrow: 'Dossier {i} sur {n} · {k} choses à l’intérieur', open: 'Ouvrir',
     hintWide: 'Ouvrez un dossier pour voir ce qu’il contient', hintPhone: 'Touchez un dossier pour voir ce qu’il contient',
@@ -895,7 +902,7 @@ const UI = {
     drawerLabel: 'Ce que fait Stand', alsoLabel: 'Aussi dans Stand', onIphone: '{x} sur iPhone',
   },
   de: {
-    tryBtn: 'Hier ausprobieren', tryTitle: 'Stand, live', tryHint: 'Die echte App, mit drei Partituren von Bach. Öffne eine, tippe auf Markings und schreib los, oder probiere das Stimmgerät, die Passagen und ein Notizbuch.', tryHintPhone: 'Die echte iPhone-App. Auf einem iPad oder Computer kannst du das ganze Pult ausprobieren.', tryReset: 'Neu beginnen', tryChip: 'Ausprobieren',
+    tryIphone: 'Die iPhone-App', tryIpad: 'Die iPad-App', tryBtn: 'Hier ausprobieren', tryTitle: 'Stand, live', tryHint: 'Die echte App, mit drei Partituren von Bach. Öffne eine, tippe auf Markings und schreib los, oder probiere das Stimmgerät, die Passagen und ein Notizbuch.', tryHintPhone: 'Die echte iPhone-App. Auf einem iPad oder Computer kannst du das ganze Pult ausprobieren.', tryReset: 'Neu beginnen', tryChip: 'Ausprobieren',
     title: 'Stand · Das Notenpult, das mit dir übt', top: 'Für iPad und iPhone', lang: 'Sprache',
     folder: 'Mappe', eyebrow: 'Mappe {i} von {n} · {k} Dinge darin', open: 'Öffnen',
     hintWide: 'Öffne eine Mappe, um hineinzusehen', hintPhone: 'Tippe auf eine Mappe, um hineinzusehen',
@@ -915,7 +922,7 @@ const UI = {
     drawerLabel: 'Was Stand kann', alsoLabel: 'Außerdem in Stand', onIphone: '{x} auf dem iPhone',
   },
   it: {
-    tryBtn: 'Provala qui', tryTitle: 'Stand, dal vivo', tryHint: 'L’app vera, con tre partiture di Bach. Aprine una, tocca Markings e scrivi, oppure prova l’accordatore, i passaggi e un quaderno.', tryHintPhone: 'La vera app per iPhone. Su un iPad o un computer puoi provare tutto il leggio.', tryReset: 'Ricomincia', tryChip: 'Provala',
+    tryIphone: 'L’app per iPhone', tryIpad: 'L’app per iPad', tryBtn: 'Provala qui', tryTitle: 'Stand, dal vivo', tryHint: 'L’app vera, con tre partiture di Bach. Aprine una, tocca Markings e scrivi, oppure prova l’accordatore, i passaggi e un quaderno.', tryHintPhone: 'La vera app per iPhone. Su un iPad o un computer puoi provare tutto il leggio.', tryReset: 'Ricomincia', tryChip: 'Provala',
     title: 'Stand · Il leggio che studia con te', top: 'Per iPad e iPhone', lang: 'Lingua',
     folder: 'Cartella', eyebrow: 'Cartella {i} di {n} · {k} cose dentro', open: 'Apri',
     hintWide: 'Apri una cartella per vedere cosa c’è dentro', hintPhone: 'Tocca una cartella per vedere cosa c’è dentro',
@@ -1770,8 +1777,12 @@ matchMedia(PHONE_MQ).addEventListener?.('change', () => { hover(-1); place(); })
   const box = document.createElement('section');
   box.className = 'trybox' + (PH ? ' ph' : ''); box.id = 'trybox'; box.hidden = true;
   box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', U.tryTitle);
-  box.innerHTML = `<div class="tbar"><b>${U.tryTitle}</b><span class="thint">${PH ? U.tryHintPhone : U.tryHint}</span>
-      <button class="tbtn" id="tryReset">${U.tryReset}</button>
+  box.innerHTML = `<div class="tbar"><b>Stand</b>
+      <span class="tkind">${PH
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10.6 5.2h2.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
+        : '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="19" cy="12" r=".9" fill="currentColor"/></svg>'}${PH ? U.tryIphone : U.tryIpad}</span>
+      <span class="thint">${PH ? U.tryHintPhone : U.tryHint}</span>
+      <button class="tbtn" id="tryReset" aria-label="${U.tryReset}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${U.tryReset}</span></button>
       <button class="icon" id="tryClose" aria-label="${U.close}"><svg><use href="#i-x"/></svg></button></div>
     <div class="tstage"><div class="tdev"><div class="tscr"><iframe title="Stand" allow="microphone; camera; autoplay; fullscreen; clipboard-write"></iframe><div class="tload"><i></i></div></div></div></div>`;
   document.body.append(box);

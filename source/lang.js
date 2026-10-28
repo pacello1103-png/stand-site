@@ -6,7 +6,7 @@ const LANGS = [['en', 'English'], ['pt', 'Português'], ['es', 'Español'], ['fr
 
 const UI = {
   en: {
-    tryBtn: 'Try it here', tryTitle: 'Stand, live', tryHint: 'The real app, with three Bach scores in it. Open one, tap Markings and write, or try the tuner, the passages and a notebook.', tryHintPhone: 'The real iPhone app. On an iPad or a computer you can try the whole stand.', tryReset: 'Start again', tryChip: 'Try it',
+    tryIphone: 'The iPhone app', tryIpad: 'The iPad app', tryBtn: 'Try it here', tryTitle: 'Stand, live', tryHint: 'The real app, with three Bach scores in it. Open one, tap Markings and write, or try the tuner, the passages and a notebook.', tryHintPhone: 'The real iPhone app. On an iPad or a computer you can try the whole stand.', tryReset: 'Start again', tryChip: 'Try it',
     title: 'Stand · The music stand that practises with you', top: 'For iPad and iPhone', lang: 'Language',
     folder: 'Folder', eyebrow: 'Folder {i} of {n} · {k} things inside', open: 'Open',
     hintWide: 'Open a folder to see inside', hintPhone: 'Tap a folder to see inside',
@@ -26,7 +26,7 @@ const UI = {
     drawerLabel: 'What Stand does', alsoLabel: 'Also in Stand', onIphone: '{x} on iPhone',
   },
   pt: {
-    tryBtn: 'Experimentar aqui', tryTitle: 'Stand, ao vivo', tryHint: 'A app verdadeira, com três partituras de Bach. Abre uma, toca em Markings e escreve, ou experimenta o afinador, as passagens e um caderno.', tryHintPhone: 'A app do iPhone, a sério. Num iPad ou num computador podes experimentar a estante toda.', tryReset: 'Começar de novo', tryChip: 'Experimenta',
+    tryIphone: 'A app do iPhone', tryIpad: 'A app do iPad', tryBtn: 'Experimentar aqui', tryTitle: 'Stand, ao vivo', tryHint: 'A app verdadeira, com três partituras de Bach. Abre uma, toca em Markings e escreve, ou experimenta o afinador, as passagens e um caderno.', tryHintPhone: 'A app do iPhone, a sério. Num iPad ou num computador podes experimentar a estante toda.', tryReset: 'Começar de novo', tryChip: 'Experimenta',
     title: 'Stand · A estante que estuda contigo', top: 'Para iPad e iPhone', lang: 'Língua',
     folder: 'Pasta', eyebrow: 'Pasta {i} de {n} · {k} coisas lá dentro', open: 'Abrir',
     hintWide: 'Abre uma pasta para ver o que tem', hintPhone: 'Toca numa pasta para ver o que tem',
@@ -46,7 +46,7 @@ const UI = {
     drawerLabel: 'O que o Stand faz', alsoLabel: 'Também no Stand', onIphone: '{x} no iPhone',
   },
   es: {
-    tryBtn: 'Pruébalo aquí', tryTitle: 'Stand, en directo', tryHint: 'La app de verdad, con tres partituras de Bach. Abre una, toca Markings y escribe, o prueba el afinador, los pasajes y un cuaderno.', tryHintPhone: 'La app de iPhone, de verdad. En un iPad o un ordenador puedes probar el atril entero.', tryReset: 'Empezar de nuevo', tryChip: 'Pruébalo',
+    tryIphone: 'La app de iPhone', tryIpad: 'La app de iPad', tryBtn: 'Pruébalo aquí', tryTitle: 'Stand, en directo', tryHint: 'La app de verdad, con tres partituras de Bach. Abre una, toca Markings y escribe, o prueba el afinador, los pasajes y un cuaderno.', tryHintPhone: 'La app de iPhone, de verdad. En un iPad o un ordenador puedes probar el atril entero.', tryReset: 'Empezar de nuevo', tryChip: 'Pruébalo',
     title: 'Stand · El atril que estudia contigo', top: 'Para iPad y iPhone', lang: 'Idioma',
     folder: 'Carpeta', eyebrow: 'Carpeta {i} de {n} · {k} cosas dentro', open: 'Abrir',
     hintWide: 'Abre una carpeta para ver qué hay dentro', hintPhone: 'Toca una carpeta para ver qué hay dentro',
@@ -66,7 +66,7 @@ const UI = {
     drawerLabel: 'Qué hace Stand', alsoLabel: 'También en Stand', onIphone: '{x} en el iPhone',
   },
   fr: {
-    tryBtn: 'L’essayer ici', tryTitle: 'Stand, en direct', tryHint: 'La vraie app, avec trois partitions de Bach. Ouvrez-en une, touchez Markings et écrivez, ou essayez l’accordeur, les passages et un cahier.', tryHintPhone: 'La vraie app pour iPhone. Sur un iPad ou un ordinateur, vous pouvez essayer tout le pupitre.', tryReset: 'Recommencer', tryChip: 'Essayer',
+    tryIphone: 'L’app iPhone', tryIpad: 'L’app iPad', tryBtn: 'L’essayer ici', tryTitle: 'Stand, en direct', tryHint: 'La vraie app, avec trois partitions de Bach. Ouvrez-en une, touchez Markings et écrivez, ou essayez l’accordeur, les passages et un cahier.', tryHintPhone: 'La vraie app pour iPhone. Sur un iPad ou un ordinateur, vous pouvez essayer tout le pupitre.', tryReset: 'Recommencer', tryChip: 'Essayer',
     title: 'Stand · Le pupitre qui travaille avec vous', top: 'Pour iPad et iPhone', lang: 'Langue',
     folder: 'Dossier', eyebrow: 'Dossier {i} sur {n} · {k} choses à l’intérieur', open: 'Ouvrir',
     hintWide: 'Ouvrez un dossier pour voir ce qu’il contient', hintPhone: 'Touchez un dossier pour voir ce qu’il contient',
@@ -86,7 +86,7 @@ const UI = {
     drawerLabel: 'Ce que fait Stand', alsoLabel: 'Aussi dans Stand', onIphone: '{x} sur iPhone',
   },
   de: {
-    tryBtn: 'Hier ausprobieren', tryTitle: 'Stand, live', tryHint: 'Die echte App, mit drei Partituren von Bach. Öffne eine, tippe auf Markings und schreib los, oder probiere das Stimmgerät, die Passagen und ein Notizbuch.', tryHintPhone: 'Die echte iPhone-App. Auf einem iPad oder Computer kannst du das ganze Pult ausprobieren.', tryReset: 'Neu beginnen', tryChip: 'Ausprobieren',
+    tryIphone: 'Die iPhone-App', tryIpad: 'Die iPad-App', tryBtn: 'Hier ausprobieren', tryTitle: 'Stand, live', tryHint: 'Die echte App, mit drei Partituren von Bach. Öffne eine, tippe auf Markings und schreib los, oder probiere das Stimmgerät, die Passagen und ein Notizbuch.', tryHintPhone: 'Die echte iPhone-App. Auf einem iPad oder Computer kannst du das ganze Pult ausprobieren.', tryReset: 'Neu beginnen', tryChip: 'Ausprobieren',
     title: 'Stand · Das Notenpult, das mit dir übt', top: 'Für iPad und iPhone', lang: 'Sprache',
     folder: 'Mappe', eyebrow: 'Mappe {i} von {n} · {k} Dinge darin', open: 'Öffnen',
     hintWide: 'Öffne eine Mappe, um hineinzusehen', hintPhone: 'Tippe auf eine Mappe, um hineinzusehen',
@@ -106,7 +106,7 @@ const UI = {
     drawerLabel: 'Was Stand kann', alsoLabel: 'Außerdem in Stand', onIphone: '{x} auf dem iPhone',
   },
   it: {
-    tryBtn: 'Provala qui', tryTitle: 'Stand, dal vivo', tryHint: 'L’app vera, con tre partiture di Bach. Aprine una, tocca Markings e scrivi, oppure prova l’accordatore, i passaggi e un quaderno.', tryHintPhone: 'La vera app per iPhone. Su un iPad o un computer puoi provare tutto il leggio.', tryReset: 'Ricomincia', tryChip: 'Provala',
+    tryIphone: 'L’app per iPhone', tryIpad: 'L’app per iPad', tryBtn: 'Provala qui', tryTitle: 'Stand, dal vivo', tryHint: 'L’app vera, con tre partiture di Bach. Aprine una, tocca Markings e scrivi, oppure prova l’accordatore, i passaggi e un quaderno.', tryHintPhone: 'La vera app per iPhone. Su un iPad o un computer puoi provare tutto il leggio.', tryReset: 'Ricomincia', tryChip: 'Provala',
     title: 'Stand · Il leggio che studia con te', top: 'Per iPad e iPhone', lang: 'Lingua',
     folder: 'Cartella', eyebrow: 'Cartella {i} di {n} · {k} cose dentro', open: 'Apri',
     hintWide: 'Apri una cartella per vedere cosa c’è dentro', hintPhone: 'Tocca una cartella per vedere cosa c’è dentro',
