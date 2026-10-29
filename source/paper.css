@@ -319,9 +319,9 @@ a.cta:active { transform: scale(.97); }
 .tload i { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(35, 57, 122, .18); border-top-color: #23397a; animation: tspin .8s linear infinite; }
 @keyframes tspin { to { transform: rotate(360deg); } }
 .trybox.loading .tload { opacity: 1; }
-.trybox.ph .tdev { inset: 0; left: 0; top: 0; width: 100% !important; height: 100% !important; transform: none !important; border: 0; border-radius: 0; box-shadow: none; }
-.trybox.ph .tscr { border-radius: 0; clip-path: none; -webkit-mask-image: none; }
-.trybox.ph .tbar { padding-bottom: 8px; gap: 10px; }
+.trybox.full .tdev { inset: 0; left: 0; top: 0; width: 100% !important; height: 100% !important; transform: none !important; border: 0; border-radius: 0; box-shadow: none; }
+.trybox.full .tscr { border-radius: 0; clip-path: none; -webkit-mask-image: none; }
+.trybox.full .tbar { padding-bottom: 8px; gap: 10px; }
 .trybox.ph .thint { font-size: 12px; }
 @media (max-width: 900px) { .trybox:not(.ph) .thint { display: none; } }
 @media (max-width: 420px) { .trybox.ph .thint { display: none; } }

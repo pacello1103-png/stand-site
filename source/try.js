@@ -3,7 +3,9 @@
   /* which app: a phone-sized window gets the iPhone app, anything larger the iPad app (decided at each opening,
      from the room there really is, so a phone in desktop mode or an in-app browser still gets the iPhone app) */
   const phoneSized = () => /iPhone|iPod/.test(navigator.userAgent) || innerWidth < 600 || Math.min(screen.width, screen.height) < 500 || (innerHeight < 500 && matchMedia('(pointer: coarse)').matches);
-  let PH = phoneSized();
+  /* a tablet (iPad, Android tablet) is already the device: the app fills its screen, with no drawn iPad around it */
+  const tabletSized = () => !phoneSized() && (navigator.maxTouchPoints > 1 || matchMedia('(pointer: coarse)').matches);
+  let PH = phoneSized(), FULL = PH;
   const box = document.createElement('section');
   box.className = 'trybox'; box.id = 'trybox'; box.hidden = true;
   box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', U.tryTitle);
@@ -21,7 +23,7 @@
   let y = 0, pushed = false, wipeT = 0;
   /* an 11-inch iPad, the right way round for the window, as large as fits */
   const fit = () => {
-    if (box.hidden || PH) return;
+    if (box.hidden || FULL) return;
     const w = stage.clientWidth, h = stage.clientHeight, land = w >= h * 0.95;
     const W = land ? 1180 : 820, H = land ? 820 : 1180, B = 16;
     const k = Math.min(1, (w - 24) / (W + 2 * B), (h - 24) / (H + 2 * B));
@@ -34,7 +36,9 @@
   function open(push = true) {
     if (!box.hidden) return;
     clearTimeout(wipeT);
-    PH = phoneSized(); box.classList.toggle('ph', PH);
+    PH = phoneSized(); FULL = PH || tabletSized();
+    box.classList.toggle('ph', PH); box.classList.toggle('full', FULL);
+    dev.style.cssText = '';
     box.querySelector('.tk').innerHTML = kindHTML();
     box.querySelector('#tryReset').onclick = () => load(true);
     y = scrollY; document.body.style.top = -y + 'px'; document.body.classList.add('locked');
