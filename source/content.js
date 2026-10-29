@@ -129,7 +129,7 @@ const F = [
       { id: 'instruments', icon: 'instruments', name: 'Instruments', shot: '43_instruments',
         h: 'More than 100 instruments, each in its own key.',
         p: 'Woodwinds, brass, percussion, keyboards, guitars, voices and strings, with every transposing instrument and the brass band. Write in concert pitch; the parts come out in the key each player reads.',
-        chips: ['Clarinet in A, B♭, E♭', 'Horn in F or E♭', 'Euphonium, tenor horn', 'Solo to orchestra'] },
+        chips: ['In orchestral score order', 'The right clef for each', 'Professional ranges', 'Solo to orchestra'] },
       { id: 'layout', icon: 'layout', name: 'Layout & sound', shot: '45_layout',
         h: 'Engraved the way it should be.',
         p: 'Staff size, paper and orientation, empty staves hidden, and staves that never collide. Choose the room and the tuning, from A = 415 to 443.' },
