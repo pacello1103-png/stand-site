@@ -139,7 +139,12 @@ function vidCheck(v) {
   else if (!shouldPlay && !v.paused) v.pause();
 }
 const vidIO = 'IntersectionObserver' in window ? new IntersectionObserver((es) => es.forEach((e) => { vidSeen.set(e.target, e.isIntersecting); vidCheck(e.target); }), { threshold: 0.25 }) : null;
-function watchVids(root = document) { root.querySelectorAll('video.vid').forEach((v) => { if (v.dataset.w) return; v.dataset.w = '1'; if (vidIO) vidIO.observe(v); else { vidSeen.set(v, true); vidCheck(v); } }); }
+/* at the end, a short rest on the last frame, then from the beginning again (done by hand: Safari's own loop sometimes stops) */
+function vidAgain(v) {
+  clearTimeout(v._again);
+  v._again = setTimeout(() => { try { v.currentTime = 0; } catch {} v.pause(); vidCheck(v); }, 1400);
+}
+function watchVids(root = document) { root.querySelectorAll('video.vid').forEach((v) => { if (v.dataset.w) return; v.dataset.w = '1'; v.addEventListener('ended', () => vidAgain(v)); if (vidIO) vidIO.observe(v); else { vidSeen.set(v, true); vidCheck(v); } }); }
 document.addEventListener('visibilitychange', () => document.querySelectorAll('video.vid').forEach(vidCheck));
 /* big titles shrink until their longest word fits the column (long names in some languages) */
 function fitTitles() {

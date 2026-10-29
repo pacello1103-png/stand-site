@@ -176,8 +176,8 @@ const F = [
     ] },
 ];
 
-/* screen recordings from the app: muted, looping, played only while on screen */
-const vidHTML = (n, pre = '') => `<video class="vid" src="${pre}vid/${n}.mp4" poster="${pre}vid/${n}.webp" muted playsinline loop preload="metadata" aria-hidden="true" disablepictureinpicture></video>`;
+/* screen recordings from the app: muted, played again and again (with a short rest between), only while on screen */
+const vidHTML = (n, pre = '') => `<video class="vid" src="${pre}vid/${n}.mp4" poster="${pre}vid/${n}.webp" muted playsinline preload="metadata" aria-hidden="true" disablepictureinpicture></video>`;
 /* App Store: paste the link here on launch day and the buttons become "Download on the App Store". */
 const APP_STORE_URL = '';
 const ctaHTML = () => APP_STORE_URL
